@@ -17,6 +17,7 @@ type VisualizationAreaProps = {
   onStepBackward: () => void;
   onGenerateNewData: () => void;
   animationSpeed: number;
+  dataType?: string;
 };
 
 export function VisualizationArea({
@@ -31,6 +32,7 @@ export function VisualizationArea({
   onStepBackward,
   onGenerateNewData,
   animationSpeed,
+  dataType = 'random',
 }: VisualizationAreaProps) {
   
   // Determine which visualization to show based on the algorithm type
@@ -101,7 +103,7 @@ export function VisualizationArea({
         totalSteps={trace.length}
         description={trace[currentStep]?.description || ""}
         algorithmName={algorithm?.name || "Algorithm"}
-        dataType={algorithm?.type === 'sorting' ? 'random' : 'sorted'}
+        dataType={dataType}
       />
     </div>
   );
