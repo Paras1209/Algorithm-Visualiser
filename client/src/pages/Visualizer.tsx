@@ -95,7 +95,7 @@ export function Visualizer() {
         input = selectedAlgorithm.generateInput(arraySize, dataType);
         console.log("Generated searching input:", input);
       } else if (selectedAlgorithm.type === 'pathfinding' || selectedAlgorithm.type === 'graph') {
-        input = selectedAlgorithm.generateInput(10);
+        input = selectedAlgorithm.generateInput(10, 'random');
         console.log("Generated graph input:", input);
       }
       

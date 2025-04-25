@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom styles for algorithm visualizations */
+.visualization-element {
+  min-height: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform-origin: bottom;
+  animation: appear 0.5s ease-out;
+}
+
+@keyframes appear {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.bg-blue-500 { background-color: #3b82f6; }
+.bg-red-500 { background-color: #ef4444; }
+.bg-green-500 { background-color: #22c55e; }
+.bg-green-300 { background-color: #86efac; }
+.bg-purple-500 { background-color: #a855f7; }
+.bg-yellow-500 { background-color: #eab308; }
+
 @layer base {
   :root {
     --background: 0 0% 100%;

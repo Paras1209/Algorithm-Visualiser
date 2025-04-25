@@ -22,6 +22,14 @@ export function ArrayVisualization({
 }: ArrayVisualizationProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [maxValue, setMaxValue] = useState<number>(100);
+  const [animated, setAnimated] = useState(false);
+  
+  // Trigger animation effect on indices change
+  useEffect(() => {
+    setAnimated(true);
+    const timer = setTimeout(() => setAnimated(false), 300);
+    return () => clearTimeout(timer);
+  }, [currentIndices, comparingIndices, swappingIndices, sortedIndices, visitedIndices]);
   
   useEffect(() => {
     // Find the maximum value in the array for scaling
@@ -110,11 +118,18 @@ export function ArrayVisualization({
         {array.map((value, index) => (
           <div
             key={index}
-            className={`visualization-element rounded-t-md ${getBarColor(value, index)} flex justify-center items-end text-white text-xs font-mono relative group hover:opacity-90`}
+            className={`visualization-element rounded-t-md ${getBarColor(value, index)} ${
+              (swappingIndices.includes(index) || currentIndices.includes(index) || comparingIndices.includes(index)) 
+                ? 'animate-pulse shadow-lg' 
+                : ''
+            } flex justify-center items-end text-white text-xs font-mono relative group hover:opacity-90`}
             style={{ 
               height: `calc(10% + ${(value / maxValue) * 80}%)`,
               transition: "all 0.3s ease",
-              width: `${Math.max(100 / array.length - 1, 8)}px`
+              width: `${Math.max(100 / array.length - 1, 8)}px`,
+              transform: animated && (swappingIndices.includes(index) || currentIndices.includes(index)) 
+                ? 'scale(1.05)' 
+                : 'scale(1)'
             }}
           >
             <span className="absolute -top-5 select-none">{array.length <= 30 ? value : ''}</span>
