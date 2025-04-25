@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221 83% 53%;  /* Blue-600 */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 226 100% 94%; /* Indigo-100 */
+    --secondary-foreground: 226 70% 40%; /* Indigo-800 */
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 47 95% 50%; /* Accent-400 */
+    --accent-foreground: 47 95% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.5rem;
+
+    /* Chart colors */
+    --chart-1: 221 83% 53%;
+    --chart-2: 226 70% 55%;
+    --chart-3: 47 95% 50%;
+    --chart-4: 142 72% 50%;
+    --chart-5: 0 84% 60%;
+
+    /* Sidebar specific colors */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 226 70% 55%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 221 83% 53%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 47 95% 50%;
+    --accent-foreground: 47 95% 10%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 224 71.4% 4.1%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+  h3 {
+    @apply text-lg;
+  }
+
+  /* Visualization Elements */
+  .visualization-element {
+    transition: all 0.3s ease;
+  }
+
+  /* Visualization Colors */
+  .element-default {
+    @apply bg-primary-500;
+  }
+
+  .element-current {
+    @apply bg-green-500;
+  }
+
+  .element-comparing {
+    @apply bg-accent-500;
+  }
+
+  .element-swapping {
+    @apply bg-red-500;
+  }
+
+  .element-sorted {
+    @apply bg-green-500;
+  }
+
+  .element-visited {
+    @apply bg-secondary-500;
+  }
+
+  .element-path {
+    @apply bg-accent-500;
+  }
+
+  /* Tooltip */
+  [data-tooltip] {
+    @apply relative;
+  }
+
+  [data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    @apply absolute bottom-full left-1/2 transform -translate-x-1/2 p-2 bg-slate-800 text-white rounded text-xs whitespace-nowrap z-10;
+  }
+
+  /* SVG Animation */
+  .node-enter {
+    animation: node-enter 0.3s ease-out forwards;
+  }
+
+  @keyframes node-enter {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .edge-enter {
+    animation: edge-enter 0.3s ease-out forwards;
+  }
+
+  @keyframes edge-enter {
+    from {
+      opacity: 0;
+      stroke-dashoffset: 100;
+    }
+    to {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+  }
+}
