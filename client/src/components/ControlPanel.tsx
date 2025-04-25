@@ -105,10 +105,12 @@ export function ControlPanel({
 
       <div className="w-full md:w-auto text-center md:text-left">
         <h3 className="text-sm font-semibold text-slate-700">{algorithmName} - {dataType.charAt(0).toUpperCase() + dataType.slice(1)} Data</h3>
-        <p className="text-sm text-slate-600">{description}</p>
-        <p className="text-xs text-slate-500 mt-1">
-          Step {currentStep + 1} of {totalSteps}
-        </p>
+        <div className="mt-2 bg-slate-100 p-2 rounded-md border-l-4 border-blue-500">
+          <p className="text-sm font-medium text-slate-800">{description}</p>
+          <p className="text-xs text-slate-600 mt-1">
+            Step {currentStep + 1} of {totalSteps}
+          </p>
+        </div>
       </div>
 
       <div className="flex items-center gap-2 text-sm text-slate-600">
