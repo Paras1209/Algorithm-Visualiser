@@ -37,7 +37,12 @@ export function VisualizationArea({
   
   // Determine which visualization to show based on the algorithm type
   const renderVisualization = () => {
+    console.log("VisualizationArea rendering, algorithm:", algorithm?.name);
+    console.log("Trace length:", trace.length);
+    console.log("Current step:", currentStep);
+    
     if (!algorithm || !trace || trace.length === 0) {
+      console.log("No algorithm or trace data to visualize");
       return (
         <div className="flex h-full items-center justify-center text-slate-400">
           <p>Select an algorithm and generate data to visualize</p>
@@ -47,6 +52,7 @@ export function VisualizationArea({
 
     // Get the current step data
     const currentStepData = trace[currentStep];
+    console.log("Current step data:", currentStepData);
 
     switch (algorithm.type) {
       case 'sorting':

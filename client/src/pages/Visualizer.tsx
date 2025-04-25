@@ -86,15 +86,24 @@ export function Visualizer() {
     
     try {
       let input;
+      console.log("Generating input for algorithm:", selectedAlgorithm.name, "Type:", selectedAlgorithm.type);
+      
       if (selectedAlgorithm.type === 'sorting') {
         input = selectedAlgorithm.generateInput(arraySize, dataType);
+        console.log("Generated sorting input:", input);
       } else if (selectedAlgorithm.type === 'searching') {
         input = selectedAlgorithm.generateInput(arraySize, dataType);
+        console.log("Generated searching input:", input);
       } else if (selectedAlgorithm.type === 'pathfinding' || selectedAlgorithm.type === 'graph') {
         input = selectedAlgorithm.generateInput(10);
+        console.log("Generated graph input:", input);
       }
       
+      console.log("Executing algorithm...");
       const algorithmTrace = selectedAlgorithm.execute(input);
+      console.log("Algorithm execution result:", algorithmTrace);
+      console.log("First trace step:", algorithmTrace[0]);
+      
       setTrace(algorithmTrace);
       
       toast({
