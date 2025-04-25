@@ -57,6 +57,7 @@ export function VisualizationArea({
             swappingIndices={currentStepData.swappingIndices || []}
             sortedIndices={currentStepData.sortedIndices || []}
             visitedIndices={currentStepData.visitedIndices || []}
+            algorithmName={algorithm.name}
           />
         );
       case 'pathfinding':
@@ -99,6 +100,8 @@ export function VisualizationArea({
         currentStep={currentStep}
         totalSteps={trace.length}
         description={trace[currentStep]?.description || ""}
+        algorithmName={algorithm?.name || "Algorithm"}
+        dataType={algorithm?.type === 'sorting' ? 'random' : 'sorted'}
       />
     </div>
   );

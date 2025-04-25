@@ -27,6 +27,8 @@ type ControlPanelProps = {
   currentStep: number;
   totalSteps: number;
   description: string;
+  algorithmName?: string;
+  dataType?: string;
 };
 
 export function ControlPanel({
@@ -41,6 +43,8 @@ export function ControlPanel({
   currentStep,
   totalSteps,
   description,
+  algorithmName = "Algorithm",
+  dataType = "random",
 }: ControlPanelProps) {
   return (
     <div className="bg-white border border-slate-200 rounded-lg mt-4 p-3 flex flex-col md:flex-row gap-4 justify-between items-center">
@@ -100,6 +104,7 @@ export function ControlPanel({
       </div>
 
       <div className="w-full md:w-auto text-center md:text-left">
+        <h3 className="text-sm font-semibold text-slate-700">{algorithmName} - {dataType.charAt(0).toUpperCase() + dataType.slice(1)} Data</h3>
         <p className="text-sm text-slate-600">{description}</p>
         <p className="text-xs text-slate-500 mt-1">
           Step {currentStep + 1} of {totalSteps}

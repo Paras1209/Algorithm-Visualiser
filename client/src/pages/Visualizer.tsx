@@ -169,6 +169,7 @@ export function Visualizer() {
             onStepBackward={handleStepBackward}
             onGenerateNewData={generateNewData}
             animationSpeed={animationSpeed}
+            dataType={dataType}
           />
           
           {selectedAlgorithm && (
