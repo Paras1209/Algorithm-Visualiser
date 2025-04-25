@@ -36,13 +36,13 @@ export function ArrayVisualization({
     } else if (currentIndices.includes(index)) {
       return "bg-green-500"; // Current
     } else if (comparingIndices.includes(index)) {
-      return "bg-accent-500"; // Comparing
+      return "bg-purple-500"; // Comparing
     } else if (sortedIndices.includes(index)) {
-      return "bg-green-500"; // Sorted
+      return "bg-green-300"; // Sorted
     } else if (visitedIndices.includes(index)) {
-      return "bg-secondary-500"; // Visited (for search algorithms)
+      return "bg-yellow-500"; // Visited (for search algorithms)
     } else {
-      return "bg-primary-500"; // Default
+      return "bg-blue-500"; // Default
     }
   };
 
@@ -77,7 +77,7 @@ export function ArrayVisualization({
         </h3>
         <div className="flex justify-center space-x-4 text-sm">
           <div className="flex items-center">
-            <div className="w-4 h-4 bg-primary-500 rounded mr-1"></div>
+            <div className="w-4 h-4 bg-blue-500 rounded mr-1"></div>
             <span>Default</span>
           </div>
           <div className="flex items-center">
@@ -86,11 +86,19 @@ export function ArrayVisualization({
           </div>
           <div className="flex items-center">
             <div className="w-4 h-4 bg-green-500 rounded mr-1"></div>
-            <span>Current/Sorted</span>
+            <span>Current</span>
           </div>
           <div className="flex items-center">
-            <div className="w-4 h-4 bg-accent-500 rounded mr-1"></div>
+            <div className="w-4 h-4 bg-green-300 rounded mr-1"></div>
+            <span>Sorted</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-purple-500 rounded mr-1"></div>
             <span>Comparing</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-yellow-500 rounded mr-1"></div>
+            <span>Visited</span>
           </div>
         </div>
         <div className="mt-2 text-center text-sm text-slate-600">
@@ -98,17 +106,18 @@ export function ArrayVisualization({
         </div>
       </div>
       
-      <div className="flex items-end flex-1 w-full gap-1" ref={containerRef}>
+      <div className="flex items-end justify-center flex-1 w-full gap-0.5 p-4" ref={containerRef}>
         {array.map((value, index) => (
           <div
             key={index}
-            className={`visualization-element flex-1 rounded-t-md ${getBarColor(value, index)} flex justify-center items-end text-white text-xs font-mono relative group`}
+            className={`visualization-element rounded-t-md ${getBarColor(value, index)} flex justify-center items-end text-white text-xs font-mono relative group hover:opacity-90`}
             style={{ 
-              height: `calc(10% + ${(value / maxValue) * 85}%)`,
-              transition: "all 0.3s ease"
+              height: `calc(10% + ${(value / maxValue) * 80}%)`,
+              transition: "all 0.3s ease",
+              width: `${Math.max(100 / array.length - 1, 8)}px`
             }}
           >
-            <span className="absolute -top-5 select-none">{value}</span>
+            <span className="absolute -top-5 select-none">{array.length <= 30 ? value : ''}</span>
             {getBarLabel(index) && (
               <span className="absolute -bottom-6 text-xs text-slate-600 hidden group-hover:block">{getBarLabel(index)}</span>
             )}
