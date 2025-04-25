@@ -119,9 +119,11 @@ export function ArrayVisualization({
           <div
             key={index}
             className={`visualization-element rounded-t-md ${getBarColor(value, index)} ${
-              (swappingIndices.includes(index) || currentIndices.includes(index) || comparingIndices.includes(index)) 
-                ? 'animate-pulse shadow-lg' 
-                : ''
+              swappingIndices.includes(index) 
+                ? 'swapping shadow-lg' 
+                : (currentIndices.includes(index) || comparingIndices.includes(index))
+                  ? 'active shadow-lg' 
+                  : ''
             } flex justify-center items-end text-white text-xs font-mono relative group hover:opacity-90`}
             style={{ 
               height: `calc(10% + ${(value / maxValue) * 80}%)`,

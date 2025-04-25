@@ -55,14 +55,25 @@ export function Visualizer() {
     
     if (isPlaying && currentStep < trace.length - 1) {
       // Calculate delay based on animation speed (1 = slow, 5 = fast)
-      const delay = 1000 / animationSpeed;
+      // More consistent delay - slower for better visualization
+      const delay = 2000 / (animationSpeed * 2);
       
       animationTimer = setTimeout(() => {
         setCurrentStep((prev) => prev + 1);
+        
+        // Log step changes to help with debugging
+        console.log(`Moving to step ${currentStep + 1} of ${trace.length}`);
+        if (trace[currentStep + 1]) {
+          console.log(`Next action: ${trace[currentStep + 1].description}`);
+        }
       }, delay);
     } else if (isPlaying && currentStep >= trace.length - 1) {
       // Stop playing when we reach the end
       setIsPlaying(false);
+      toast({
+        title: "Animation complete",
+        description: "The algorithm execution has finished.",
+      });
     }
     
     return () => {
