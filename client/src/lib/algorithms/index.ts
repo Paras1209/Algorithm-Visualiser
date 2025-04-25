@@ -317,7 +317,12 @@ end function`,
     worstCase: 'O(n)',
     type: 'searching',
     execute: linearSearch,
-    generateInput: generateRandomArray
+    generateInput: (size: number, type: string) => {
+      const array = generateRandomArray(size, type);
+      // Choose a random element as the target
+      const targetIndex = Math.floor(Math.random() * array.length);
+      return { array, target: array[targetIndex] };
+    }
   }
 ];
 
