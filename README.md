@@ -26,7 +26,7 @@ Run the setup script which will install dependencies and set up the environment:
 
 ```bash
 git clone <repository-url>
-cd CultureQuest
+cd `folder name`
 ./setup.sh
 ```
 
@@ -37,7 +37,7 @@ After running the script, make sure to update the `.env` file with your PostgreS
 1. Clone this repository:
 ```bash
 git clone <repository-url>
-cd CultureQuest
+cd `foldername`
 ```
 
 2. Install dependencies:
