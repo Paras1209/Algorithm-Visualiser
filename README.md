@@ -1,4 +1,4 @@
-# CultureQuest
+# Algorithm Visualiser
 
 An interactive algorithm visualization tool that helps you understand various algorithms through step-by-step animations and educational content.
 
