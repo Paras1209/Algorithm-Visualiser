@@ -1,4 +1,4 @@
-# Algorithm Visualizer
+# CultureQuest
 
 An interactive algorithm visualization tool that helps you understand various algorithms through step-by-step animations and educational content.
 
@@ -26,7 +26,7 @@ Run the setup script which will install dependencies and set up the environment:
 
 ```bash
 git clone <repository-url>
-cd algorithm-visualizer
+cd CultureQuest
 ./setup.sh
 ```
 
@@ -37,7 +37,7 @@ After running the script, make sure to update the `.env` file with your PostgreS
 1. Clone this repository:
 ```bash
 git clone <repository-url>
-cd algorithm-visualizer
+cd CultureQuest
 ```
 
 2. Install dependencies:
@@ -46,13 +46,28 @@ npm install
 ```
 
 3. Set up environment variables:
-Create a `.env` file in the root directory (you can copy from `.env.example`):
+Create a `.env` file in the root directory with the following content:
 ```
-DATABASE_URL=postgresql://username:password@localhost:5432/algorithm_visualizer
-```
-Replace `username`, `password`, and `algorithm_visualizer` with your PostgreSQL credentials.
+# Database connection URL
+DATABASE_URL=postgresql://postgres:your_password@localhost:5432/algorithm_visualiser
 
-4. Initialize the database:
+# Database configuration (will be used if DATABASE_URL is not provided)
+PGHOST=localhost
+PGPORT=5432
+PGUSER=your_username(deafault - postgres)
+PGPASSWORD=your_password
+PGDATABASE=algorithm_visualiser
+```
+Replace `your_password`,`your_username` with your PostgreSQL password.
+
+4. Make sure PostgreSQL is installed and running:
+   - On Windows, check if the PostgreSQL service is running through Services
+   - Create the database if it doesn't exist:
+     ```
+     "C:\Program Files\PostgreSQL\[version]\bin\createdb.exe" -U postgres algorithm_visualiser
+     ```
+
+5. Initialize the database:
 ```bash
 npm run db:push
 npm run db:seed
@@ -97,6 +112,20 @@ All dependencies are listed in the `package.json` file. The main dependencies ar
 - TailwindCSS and shadcn/ui for styling
 - React Query for data fetching
 
-## License
+## Troubleshooting
 
-[MIT License](LICENSE)
+### Database Connection Issues
+
+If you encounter database connection errors:
+
+1. Ensure PostgreSQL is installed and running
+2. Verify your database credentials in the `.env` file
+3. Make sure the database `algorithm_visualiser` exists
+4. For PostgreSQL command line operations, use the full path to the executable:
+   ```
+   "C:\Program Files\PostgreSQL\[version]\bin\psql.exe" -U postgres
+   ```
+
+### WebSocket Connection Errors
+
+If you see WebSocket connection errors, make sure your PostgreSQL configuration allows for the necessary connections or consider using standard PostgreSQL connections instead of WebSockets for local development.
