@@ -141,21 +141,21 @@ export function Home() {
         <section className="py-16 text-center">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <div className="bg-gradient-to-r from-primary-600 to-secondary-600 p-10 rounded-xl shadow-lg">
-                <BrainIcon className="h-16 w-16 text-white mx-auto mb-6" />
-                <h2 className="text-3xl font-bold text-white mb-4">Ready to Visualize Algorithms?</h2>
-                <p className="text-white/90 mb-8 text-lg">
-                  Start your journey to better understand algorithms through interactive visualizations.
-                </p>
-                <Button 
-                  onClick={() => setLocation("/visualizer")} 
-                  variant="secondary"
-                  className="bg-white text-primary-700 hover:bg-white/90 px-8 py-3 rounded-md text-lg"
-                >
-                  Get Started Now
-                  <ArrowRightIcon className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
+                <div className="bg-slate-100 border border-slate-200 p-10 rounded-xl shadow-sm">
+                  <BrainIcon className="h-16 w-16 text-primary-600 mx-auto mb-6" />
+                  <h2 className="text-3xl font-bold text-slate-900 mb-4">Ready to Dive Into Algorithms?</h2>
+                  <p className="text-slate-600 mb-8 text-lg">
+                    Start your journey to master algorithms through interactive visualizations and step-by-step learning.
+                  </p>
+                  <Button 
+                    onClick={() => setLocation("/visualizer")} 
+                    variant="default"
+                    className="px-8 py-3 rounded-md text-lg font-medium"
+                  >
+                    Explore Visualizations
+                    <ArrowRightIcon className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
             </div>
           </div>
         </section>

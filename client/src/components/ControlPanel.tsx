@@ -73,7 +73,7 @@ export function ControlPanel({
           size="icon"
           onClick={isPlaying ? onPause : onPlay}
           disabled={currentStep >= totalSteps - 1}
-          className="p-3 rounded-full bg-primary-600 text-white hover:bg-primary-700 flex items-center justify-center w-10 h-10 relative"
+          className="p-3 rounded-full bg-primary-600 text-slate-700 hover:bg-slate-100 flex items-center justify-center w-10 h-10 relative"
           data-tooltip={isPlaying ? "Pause" : "Play"}
         >
           {isPlaying ? (
