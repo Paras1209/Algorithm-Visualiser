@@ -6,7 +6,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Register API routes
-registerRoutes(app);
+// Register all API routes from your server
+const handler = async (req, res) => {
+  // Ensure req and res are properly initialized
+  await registerRoutes(app);
+  
+  // Handle the actual request - this will route to your Express routes
+  return app(req, res);
+};
 
-export default app;
+export default handler;
