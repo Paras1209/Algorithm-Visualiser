@@ -58,9 +58,9 @@ export function useAlgorithm() {
       if (selectedAlgorithm.type === 'sorting') {
         input = selectedAlgorithm.generateInput(arraySize, dataType);
       } else if (selectedAlgorithm.type === 'searching') {
-        input = selectedAlgorithm.generateInput(arraySize);
+        input = selectedAlgorithm.generateInput(arraySize, dataType);
       } else if (selectedAlgorithm.type === 'pathfinding' || selectedAlgorithm.type === 'graph') {
-        input = selectedAlgorithm.generateInput();
+        input = selectedAlgorithm.generateInput(arraySize, dataType);
       }
       
       return input;

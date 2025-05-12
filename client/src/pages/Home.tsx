@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { 
   Card, 
   CardContent, 
@@ -162,13 +163,7 @@ export function Home() {
       </main>
       
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-slate-400">
-            Algorithm Visualizer — An interactive educational tool for learning algorithms
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

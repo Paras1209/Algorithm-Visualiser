@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "wouter";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import AlgorithmInfo from "@/components/AlgorithmInfo";
 import VisualizationArea from "@/components/VisualizationArea";
@@ -232,6 +233,7 @@ export function Visualizer() {
           )}
         </main>
       </div>
+      <Footer />
     </div>
   );
 }
